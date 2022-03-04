@@ -1,13 +1,14 @@
 name: this is workflows test
-on: push
+
+on:
+  # Manual update only.
+  workflow_dispatch:
 
 jobs:
-  my-job:
-    name: job-test
+  deploy:
     runs-on: ubuntu-latest
     steps:
-    - name: Print a greeting
-      env:
-        MY_VAR: This is test
-      run: 
-        echo $MY_VAR {{ github.token }} {{ github.repository }}
+      - name: xxx
+        run:
+          GIT_DEPLOY_REPO="https://${{ github.token }}@github.com/${{ github.repository }}.git"
+          echo $GIT_DEPLOY_REPO
