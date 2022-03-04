@@ -1,0 +1,13 @@
+name: this is workflows test
+on: push
+
+jobs:
+  my-job:
+    name: job-test
+    runs-on: ubuntu-latest
+    steps:
+    - name: Print a greeting
+      env:
+        MY_VAR: This is test
+      run: 
+        echo $MY_VAR {{ github.token }} {{ github.repository }}
